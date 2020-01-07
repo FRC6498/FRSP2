@@ -1,0 +1,15 @@
+C:\Programming232\FRSP2\FRSP2\obj\Debug\FRSP2.csprojAssemblyReference.cache
+C:\Programming232\FRSP2\FRSP2\obj\Debug\MainWindow.g.cs
+C:\Programming232\FRSP2\FRSP2\obj\Debug\App.g.cs
+C:\Programming232\FRSP2\FRSP2\obj\Debug\FRSP2_MarkupCompile.cache
+C:\Programming232\FRSP2\FRSP2\obj\Debug\FRSP2_MarkupCompile.lref
+C:\Programming232\FRSP2\FRSP2\bin\Debug\FRSP2.exe.config
+C:\Programming232\FRSP2\FRSP2\bin\Debug\FRSP2.exe
+C:\Programming232\FRSP2\FRSP2\bin\Debug\FRSP2.pdb
+C:\Programming232\FRSP2\FRSP2\obj\Debug\MainWindow.baml
+C:\Programming232\FRSP2\FRSP2\obj\Debug\FRSP2.g.resources
+C:\Programming232\FRSP2\FRSP2\obj\Debug\FRSP2.Properties.Resources.resources
+C:\Programming232\FRSP2\FRSP2\obj\Debug\FRSP2.csproj.GenerateResource.cache
+C:\Programming232\FRSP2\FRSP2\obj\Debug\FRSP2.csproj.CoreCompileInputs.cache
+C:\Programming232\FRSP2\FRSP2\obj\Debug\FRSP2.exe
+C:\Programming232\FRSP2\FRSP2\obj\Debug\FRSP2.pdb
