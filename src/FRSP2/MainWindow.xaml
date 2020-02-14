@@ -1,0 +1,162 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FRSP2"
+        x:Class="FRSP2.MainWindow"
+        mc:Ignorable="d"
+        Title="FRSP 2020.1.0" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="None" HorizontalAlignment="Center" Height="569.867">
+    <Grid x:Name="GrdTop">
+        <Grid.DataContext>
+            <local:Robot/>
+        </Grid.DataContext>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="grdAuto"  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.01*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="autoTitle"  Grid.Row="0" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Autonomous"/></TextBlock>
+
+            <Grid x:Name="grdAutoScoring" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.35*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.35*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                </Grid.RowDefinitions>
+
+                <!--Autonomous Inner Goal-->
+                <TextBlock x:Name="autoInnerTitle"  Grid.Row="0" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Inner"/></TextBlock>
+                <Button x:Name="btnAutoInnerDecrement" Grid.Column="1" FontSize="48" VerticalAlignment="Center" Content="-" Click="BtnAutoInnerDecrement_Click"/>
+                <TextBlock x:Name="txtAutoInnerValue"  Grid.Row="0" Grid.Column="2" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding BallsAutoInner, Mode=TwoWay, TargetNullValue=0}" RenderTransformOrigin="0.5,0.5">
+                </TextBlock>
+                <Button x:Name="btnAutoInnerIncrement" Grid.Column="3" FontSize="48" VerticalAlignment="Center" Content="+" Click="BtnAutoInnerIncrement_Click"/>
+
+                <!--Autonomous Outer Goal-->
+                <TextBlock x:Name="autoOuterTitle"  Grid.Row="1" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Outer"/></TextBlock>
+                <Button x:Name="btnAutoOuterDecrement" Grid.Row="1" Grid.Column="1" FontSize="48" VerticalAlignment="Center" Content="-" Click="BtnAutoOuterDecrement_Click"/>
+                <TextBlock x:Name="txtAutoOuterValue"  Grid.Row="1" Grid.Column="2" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding BallsAutoOuter, Mode=TwoWay, TargetNullValue=0}"><Run Text="0"/></TextBlock>
+                <Button x:Name="btnAutoOuterIncrement" Grid.Row="1"  Grid.Column="3" FontSize="48" VerticalAlignment="Center" Content="+" Click="BtnAutoOuterIncrement_Click"/>
+
+                <!--Autonomous Lower Goal-->
+                <TextBlock x:Name="autoLowerTitle"  Grid.Row="2" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Lower"/></TextBlock>
+                <Button x:Name="btnAutoLowerDecrement" Grid.Row="2" Grid.Column="1" FontSize="48" VerticalAlignment="Center" Content="-" Click="BtnAutoLowerDecrement_Click"/>
+                <TextBlock x:Name="txtAutoLowerValue"  Grid.Row="2" Grid.Column="2" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding BallsAutoLower, Mode=TwoWay}" IsEnabled="False"><Run Text="0"/></TextBlock>
+                <Button x:Name="btnAutoLowerIncrement" Grid.Row="2"  Grid.Column="3" FontSize="48" VerticalAlignment="Center" Content="+" Click="BtnAutoLowerIncrement_Click"/>
+
+                <!--Initiation Line-->
+                <CheckBox x:Name="AutoCrossedLine" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" IsChecked="{Binding CrossedAutoLine, Mode=TwoWay}" Content="Crossed Initiation Line?"/>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="grdTeleop"  Grid.Column="2" Grid.Row="0" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.8*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="teleopTitle"  Grid.Row="0" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Teleop"/></TextBlock>
+
+            <Grid x:Name="grdTeleopScoring" Grid.Row="1" Margin="0,0,-27.4,-0.4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.35*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.35*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                </Grid.RowDefinitions>
+
+                <!--Teleop Inner Goal-->
+                <TextBlock x:Name="teleopInnerTitle"  Grid.Row="0" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Inner"/></TextBlock>
+                <Button x:Name="btnTeleopInnerDecrement" Grid.Column="1" FontSize="48" VerticalAlignment="Center" Content="-" Click="BtnTeleopInnerDecrement_Click"/>
+                <TextBlock x:Name="teleopInnerValue"  Grid.Row="0" Grid.Column="2" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding BallsTeleInner, Mode=TwoWay}"><Run Text="0"/></TextBlock>
+                <Button x:Name="btnTeleopInnerIncrement" Grid.Column="3" FontSize="48" VerticalAlignment="Center" Content="+" Click="BtnTeleopInnerIncrement_Click"/>
+
+                <!--Teleop Outer Goal-->
+                <TextBlock x:Name="teleopOuterTitle"  Grid.Row="1" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Outer"/></TextBlock>
+                <Button x:Name="btnTeleopOuterDecrement" Grid.Row="1" Grid.Column="1" FontSize="48" VerticalAlignment="Center" Content="-" Click="BtnTeleopOuterDecrement_Click"/>
+                <TextBlock x:Name="teleopOuterValue"  Grid.Row="1" Grid.Column="2" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding BallsTeleOuter, Mode=TwoWay}"><Run Text="0"/></TextBlock>
+                <Button x:Name="btnTeleopOuterIncrement" Grid.Row="1"  Grid.Column="3" FontSize="48" VerticalAlignment="Center" Content="+" Click="BtnTeleopOuterIncrement_Click"/>
+
+                <!--Teleop Lower Goal-->
+                <TextBlock x:Name="teleopLowerTitle"  Grid.Row="2" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Lower"/></TextBlock>
+                <Button x:Name="btnTeleopLowerDecrement" Grid.Row="2" Grid.Column="1" FontSize="48" VerticalAlignment="Center" Content="-" Click="BtnTeleopLowerDecrement_Click"/>
+                <TextBlock x:Name="teleopLowerValue"  Grid.Row="2" Grid.Column="2" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding BallsTeleLower, Mode=TwoWay}"><Run Text="0"/></TextBlock>
+                <Button x:Name="btnTeleopLowerIncrement" Grid.Row="2"  Grid.Column="3" FontSize="48" VerticalAlignment="Center" Content="+" Click="BtnTeleopLowerIncrement_Click"/>
+
+
+                <!--Control Panel-->
+                <CheckBox x:Name="chkPanelRotation" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" IsChecked="{Binding WheelRotation, Mode=TwoWay}" Content="Rotation Control?"/>
+                <CheckBox x:Name="chkPanelPosition" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" IsChecked="{Binding WheelPosition, Mode=TwoWay}" Content="Position Control?"/>
+                <CheckBox x:Name="chkClimb" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" IsChecked="{Binding CanHang, Mode=TwoWay}" Content="Climb"/>
+                <CheckBox x:Name="chkPark" Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" IsChecked="{Binding CanPark, Mode=TwoWay}" Content="Park"/>
+                <CheckBox x:Name="chkCanLevel" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" IsChecked="{Binding IsLevel, Mode=TwoWay}" Content="Can Level?"/>
+
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="grdMatchInfo"  Grid.Column="0" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="0.6*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="MatchInfoTitle" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0"  VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="24"><Run Text="Match Info"/></TextBlock>
+            <TextBlock x:Name="PositionTitle" Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="24"><Run Text="Position"/></TextBlock>
+            <TextBlock x:Name="MatchNumberTitle" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="24"><Run Text="Match Number"/></TextBlock>
+            <TextBlock x:Name="RobotNumberTitle" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="24"><Run Text="Robot Number"/></TextBlock>
+
+            <ComboBox x:Name="cboPosition" Grid.Column="3" Grid.Row="1" SelectedValue="{Binding WatchPos, Mode=TwoWay}" FontSize="20"/>
+            <TextBox x:Name="txtMatchNum" Grid.Column="3" Grid.Row="2" Text="{Binding MatchNumber, Mode=TwoWay}" FontSize="20"/>
+            <TextBox x:Name="txtRobotNum" Grid.Column="3" Grid.Row="3" Text="{Binding TeamNumber, Mode=TwoWay}" FontSize="20"/>
+        </Grid>
+
+        <Grid x:Name="grdFunctions" Grid.Column="2" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="btnUpdate" Grid.Row="1" FontSize="22" Content="Update" Click="BtnUpdate_Click"/>
+            <Button x:Name="btnExit" Grid.Row="3" FontSize="22" Click="BtnExit_Click" Content="Quit"/>
+        </Grid>
+    </Grid>
+</Window>
