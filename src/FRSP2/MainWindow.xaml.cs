@@ -92,8 +92,10 @@ namespace FRSP2
 
             CSVExporter.current = r;
             MessageBox.Show("robot sent to exporter");
-            csvExport.Export();
+            //csvExport.Export();
+            csvExport.Write(r);
             MessageBox.Show("Thread Started");
+            
             r.Reset();
         }
 

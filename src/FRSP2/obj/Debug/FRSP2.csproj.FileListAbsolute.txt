@@ -46,10 +46,6 @@ C:\Programming232\FRSP2\src\FRSP2\bin\Debug\FRSP2.exe.config
 C:\Programming232\FRSP2\src\FRSP2\bin\Debug\FRSP2.exe
 C:\Programming232\FRSP2\src\FRSP2\bin\Debug\FRSP2.pdb
 C:\Programming232\FRSP2\src\FRSP2\bin\Debug\ICSharpCode.SharpZipLib.dll
-C:\Programming232\FRSP2\src\FRSP2\bin\Debug\NPOI.dll
-C:\Programming232\FRSP2\src\FRSP2\bin\Debug\NPOI.OOXML.dll
-C:\Programming232\FRSP2\src\FRSP2\bin\Debug\NPOI.OpenXml4Net.dll
-C:\Programming232\FRSP2\src\FRSP2\bin\Debug\NPOI.OpenXmlFormats.dll
 C:\Programming232\FRSP2\src\FRSP2\bin\Debug\ICSharpCode.SharpZipLib.xml
 C:\Programming232\FRSP2\src\FRSP2\obj\Debug\MainWindow.baml
 C:\Programming232\FRSP2\src\FRSP2\obj\Debug\FRSP2.g.resources
@@ -84,3 +80,9 @@ C:\Programming232\FRSP2\src\FRSP2\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Programming232\FRSP2\src\FRSP2\bin\Debug\CsvHelper.dll
 C:\Programming232\FRSP2\src\FRSP2\bin\Debug\CsvHelper.xml
 C:\Programming232\FRSP2\src\FRSP2\bin\Debug\ICSharpCode.SharpZipLib.pdb
+C:\Programming232\FRSP2\src\FRSP2\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Programming232\FRSP2\src\FRSP2\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Programming232\FRSP2\src\FRSP2\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Programming232\FRSP2\src\FRSP2\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Programming232\FRSP2\src\FRSP2\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Programming232\FRSP2\src\FRSP2\bin\Debug\System.Threading.Tasks.Extensions.xml

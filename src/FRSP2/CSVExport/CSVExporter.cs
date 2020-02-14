@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
 using CsvHelper;
+using CsvHelper.Configuration;
 using System.Collections.Generic;
 using System.Threading;
+using System.Globalization;
 
 namespace FRSP2.CSVExport
 {
@@ -13,32 +15,32 @@ namespace FRSP2.CSVExport
         static List<Robot> robots = new List<Robot>();
         public static Robot current;
         public static Thread thread;
-        ThreadStart ts = new ThreadStart(ThreadWrite);
+        //ThreadStart ts = new ThreadStart(ThreadWrite);
         
         //IEnumerable<Robot> records;
 
         public CSVExporter()
         {
-            thread = new Thread(ts, 1000000000);
+            //thread = new Thread(ts, 1000000000);
         }
 
-        public void Export()
-        {
-            if (thread.ThreadState == ThreadState.Unstarted)
-            {
-                thread.Start();
-            }
-            else if (thread.ThreadState != ThreadState.Running)
-            {
-                thread.Abort();
-            }
+        //public void Export()
+        //{
+        //    if (thread.ThreadState == ThreadState.Unstarted)
+        //    {
+        //        thread.Start();
+        //    }
+        //    else if (thread.ThreadState != ThreadState.Running)
+        //    {
+        //        thread.Abort();
+        //    }
             
-        }
-        public static void ThreadWrite()
-        {
-            Write(current);
-        }
-        public static void Write(Robot r)
+        //}
+        //public static void ThreadWrite()
+        //{
+        //    Write(current);
+        //}
+        public void Write(Robot r)
         {
             robots.Add(r);
             if (!File.Exists(@"C:\Users\312679\Desktop\test.csv"))
@@ -46,11 +48,11 @@ namespace FRSP2.CSVExport
                 File.Create(@"C:\Users\312679\Desktop\test.csv");
             }
             using (var writer = new StreamWriter(@"C:\Users\312679\Desktop\test.csv"))
-            using (var csv = new CsvWriter(writer))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
                 try
                 {
-                    csv.WriteRecord<Robot>(r);
+                    csv.WriteRecords(robots);
                 }
                 catch (Exception)
                 {
