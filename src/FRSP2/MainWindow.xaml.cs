@@ -25,12 +25,7 @@ namespace FRSP2
         [DllImport("Kernel32")]
         public static extern void FreeConsole();
 
-        public MainWindow()
-        {
-            InitializeComponent();
-
-            Robot.self = r;
-            List<String> watchPositions = new List<String>
+        public static List<String> watchPositions = new List<String>
             {
                 "Red 1",
                 "Red 2",
@@ -40,7 +35,11 @@ namespace FRSP2
                 "Blue 3"
             };
 
-           
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            Robot.self = r;
 
             cboPosition.ItemsSource = watchPositions;
 
@@ -48,9 +47,6 @@ namespace FRSP2
             AllocConsole();
             
         }
-
-        // Inner Value Variable
-        int iv = 0;
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {

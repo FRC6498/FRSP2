@@ -11,6 +11,11 @@ namespace FRSP2
         public ICommand ObjectRelayCommand { get; set; }
         public static Robot self;
 
+        public Robot()
+        {
+
+        }
+
         public Robot Self
         {
             get

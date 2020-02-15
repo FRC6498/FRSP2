@@ -1,58 +1,46 @@
 ﻿using System;
 using System.IO;
 using CsvHelper;
-using CsvHelper.Configuration;
 using System.Collections.Generic;
 using System.Threading;
 using System.Globalization;
+using System.Windows;
 
 namespace FRSP2.CSVExport
 {
     public class CSVExporter
     {
         Robot robot = new Robot();
-        //TODO: read robot, then write current one in addition
         static List<Robot> robots = new List<Robot>();
         public static Robot current;
         public static Thread thread;
-        //ThreadStart ts = new ThreadStart(ThreadWrite);
-        
-        //IEnumerable<Robot> records;
+        static Properties.Settings settings = Properties.Settings.Default;
 
-        public CSVExporter()
-        {
-            //thread = new Thread(ts, 1000000000);
-        }
-
-        //public void Export()
-        //{
-        //    if (thread.ThreadState == ThreadState.Unstarted)
-        //    {
-        //        thread.Start();
-        //    }
-        //    else if (thread.ThreadState != ThreadState.Running)
-        //    {
-        //        thread.Abort();
-        //    }
-            
-        //}
-        //public static void ThreadWrite()
-        //{
-        //    Write(current);
-        //}
         public void Write(Robot r)
         {
-            robots.Add(r);
-            if (!File.Exists(@"C:\Users\312679\Desktop\test.csv"))
+            if (!File.Exists(@"E:\NewDesktop\test.csv"))
             {
-                File.Create(@"C:\Users\312679\Desktop\test.csv");
+                File.Create(@"E:\NewDesktop\test.csv");
             }
-            using (var writer = new StreamWriter(@"C:\Users\312679\Desktop\test.csv"))
+            using (var writer = new StreamWriter(@"E:\NewDesktop\test.csv"))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
                 try
                 {
-                    csv.WriteRecords(robots);
+                    robots.Add(r);
+                    csv.Configuration.RegisterClassMap<RobotMap>();
+                    if (String.IsNullOrEmpty(r.WatchPos))
+                    {
+                        MessageBox.Show("Please Select a Watch Position");
+                        return;
+                    }
+                    if (String.IsNullOrEmpty(File.ReadAllText(@"E:\NewDesktop\test.csv")))
+                    {
+                        List<Robot> rs = new List<Robot>();
+                        rs.Add(r);
+                        csv.WriteRecords(rs);
+                    }
+
                 }
                 catch (Exception)
                 {
