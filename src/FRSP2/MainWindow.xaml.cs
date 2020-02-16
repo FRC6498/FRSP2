@@ -44,13 +44,13 @@ namespace FRSP2
             cboPosition.ItemsSource = watchPositions;
 
             GrdTop.DataContext = r;
-            AllocConsole();
+            //AllocConsole();
             
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
-            FreeConsole();
+            //FreeConsole();
             Application.Current.Shutdown();
         }
 
@@ -78,7 +78,6 @@ namespace FRSP2
                 r.IsLevel = (bool)chkCanLevel.IsChecked;
                 r.WheelRotation = (bool)chkPanelRotation.IsChecked;
                 r.WheelPosition = (bool)chkPanelPosition.IsChecked;
-                MessageBox.Show("Values assigned");
                 
             }
             catch (Exception ex)
@@ -87,10 +86,8 @@ namespace FRSP2
             }
 
             CSVExporter.current = r;
-            MessageBox.Show("robot sent to exporter");
             //csvExport.Export();
             csvExport.Write(r);
-            MessageBox.Show("Thread Started");
             
             r.Reset();
         }

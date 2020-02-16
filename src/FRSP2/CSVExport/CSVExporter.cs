@@ -2,9 +2,10 @@
 using System.IO;
 using CsvHelper;
 using System.Collections.Generic;
-using System.Threading;
 using System.Globalization;
 using System.Windows;
+using System.Diagnostics;
+using CsvHelper.Configuration;
 
 namespace FRSP2.CSVExport
 {
@@ -13,42 +14,40 @@ namespace FRSP2.CSVExport
         Robot robot = new Robot();
         static List<Robot> robots = new List<Robot>();
         public static Robot current;
-        public static Thread thread;
-        static Properties.Settings settings = Properties.Settings.Default;
+        public static string path = @"E:\\NewDesktop\\test.csv";
+
 
         public void Write(Robot r)
         {
-            if (!File.Exists(@"E:\NewDesktop\test.csv"))
+            CsvConfiguration config = new CsvConfiguration(CultureInfo.CurrentCulture)
             {
-                File.Create(@"E:\NewDesktop\test.csv");
+                HasHeaderRecord = !File.Exists(path)
+            };
+
+            if (!File.Exists(path))
+            {
+                //FileStream fs = File.Create(path);
+                //fs.Close();
             }
-            using (var writer = new StreamWriter(@"E:\NewDesktop\test.csv"))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+
+            if (String.IsNullOrEmpty(r.WatchPos))
             {
-                try
-                {
-                    robots.Add(r);
-                    csv.Configuration.RegisterClassMap<RobotMap>();
-                    if (String.IsNullOrEmpty(r.WatchPos))
-                    {
-                        MessageBox.Show("Please Select a Watch Position");
-                        return;
-                    }
-                    if (String.IsNullOrEmpty(File.ReadAllText(@"E:\NewDesktop\test.csv")))
-                    {
-                        List<Robot> rs = new List<Robot>();
-                        rs.Add(r);
-                        csv.WriteRecords(rs);
-                    }
+                MessageBox.Show("Please Select a Watch Position");
+                return;
+            }
 
-                }
-                catch (Exception)
+            using (FileStream filestream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
+            {
+                using (StreamWriter streamwriter = new StreamWriter(filestream))
                 {
-
+                    using (var csv = new CsvWriter(streamwriter, config))
+                    {
+                        robots.Add(r);
+                        csv.Configuration.RegisterClassMap<RobotMap>();
+                        csv.WriteRecords(robots);
+                    }
                 }
             }
         }
     }
-
-
 }
