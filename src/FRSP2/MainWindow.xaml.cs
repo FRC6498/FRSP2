@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -87,7 +88,9 @@ namespace FRSP2
 
             CSVExporter.current = r;
             //csvExport.Export();
-            csvExport.Write(r);
+            List<Robot> old = csvExport.Read().ToList();
+            old.Add(r);
+            csvExport.Write(old);
             
             r.Reset();
         }
