@@ -88,9 +88,7 @@ namespace FRSP2
 
             CSVExporter.current = r;
             //csvExport.Export();
-            List<Robot> old = csvExport.Read().ToList();
-            old.Add(r);
-            csvExport.Write(old);
+            csvExport.Write(csvExport.Read(), r);
             
             r.Reset();
         }
