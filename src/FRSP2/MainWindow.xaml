@@ -156,7 +156,7 @@
             </Grid.RowDefinitions>
 
             <Button x:Name="btnUpdate" Grid.Row="1" FontSize="22" Content="Update" Click="BtnUpdate_Click"/>
-            <Button x:Name="btnExit" Grid.Row="3" FontSize="22" Click="BtnExit_Click" Content="Quit"/>
+            <Button x:Name="btnExit" Grid.Row="3" FontSize="22" Click="BtnExit_Click" Content="Quit" PreviewKeyUp="BtnExit_PreviewKeyUp"/>
         </Grid>
     </Grid>
 </Window>

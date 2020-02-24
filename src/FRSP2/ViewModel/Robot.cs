@@ -9,23 +9,11 @@ namespace FRSP2
     public class Robot : INotifyPropertyChanged
     {
         public ICommand ObjectRelayCommand { get; set; }
-        public static Robot self;
+        //public static Robot self;
 
         public Robot()
         {
 
-        }
-
-        public Robot Self
-        {
-            get
-            {
-                return self;
-            }
-            set
-            {
-                self = value;
-            }
         }
 
         // all game events and data points. this class is a liason between the UI itself and the VM
@@ -280,6 +268,8 @@ namespace FRSP2
             IsLevel = false;
             WheelPosition = false;
             WheelRotation = false;
+            MatchNumber += 1;
+            TeamNumber = 0000;
         }
     }
 }

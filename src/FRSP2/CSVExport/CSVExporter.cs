@@ -1,11 +1,11 @@
-﻿using System;
+﻿using System.Linq;
 using System.IO;
 using CsvHelper;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Windows;
-using System.Diagnostics;
 using CsvHelper.Configuration;
+using System;
+using System.Windows;
 
 namespace FRSP2.CSVExport
 {
@@ -14,39 +14,71 @@ namespace FRSP2.CSVExport
         Robot robot = new Robot();
         static List<Robot> robots = new List<Robot>();
         public static Robot current;
-        public static string path = @"C:\\Programming232\\testx.csv";
-        public IEnumerable<Robot> Read()
+        //public static string path = @"C:\\Programming232\\test.csv";
+        public static string templatepath = @"C:\\Users\\castl\\Desktop\\template.txt";
+        public static string path = @"C:\\Users\\castl\\Desktop\\test.csv";
+        public static string csvFirstLine;
+        static Boolean headerExists = false;
+        static string header = File.ReadAllText(templatepath);
+        CsvConfiguration config = new CsvConfiguration(CultureInfo.CurrentCulture)
         {
-            IEnumerable<Robot> records;
-            using (FileStream filestream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read, FileShare.Read))
+            HasHeaderRecord = GetHeader() == header
+        };
+        
+        public static string GetHeader()
+        {
+            try
             {
+                csvFirstLine = File.ReadLines(path).ToArray()[0];
+            }
+            catch (Exception)
+            {
+                csvFirstLine = "";
+            }
+            return csvFirstLine;
+        }
+        public void Read()
+        {
+            
+            // get header string
+            if (!csvFirstLine.Contains(header))
+            {
+                //MessageBox.Show(csvFirstLine);
+                headerExists = false;
+            }
+            else
+            {
+                headerExists = true;
+            }
+            if (!headerExists)
+            {
+                File.WriteAllText(path, header + Environment.NewLine); // replace all text with header (file was empty anyhow)
+            }
+            using (FileStream filestream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
+            {     
                 using (StreamReader reader = new StreamReader(filestream))
                 {
                     using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
                     {
-                        
-                        records = csv.GetRecords<Robot>();
+                        csv.Configuration.RegisterClassMap<RobotMap>();
+                        robots = csv.GetRecords<Robot>().ToList();
                     }
                 }
             }
-            return records;
         }
 
-        public void Write(List<Robot> list, Robot r)
+        public void Write(Robot r)
         {
-            CsvConfiguration config = new CsvConfiguration(CultureInfo.CurrentCulture)
-            {
-                HasHeaderRecord = !File.Exists(path)
-            };
+            Read();
 
-            using (FileStream filestream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite))
+            using (FileStream filestream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.Write))
             {
                 using (StreamWriter streamwriter = new StreamWriter(filestream))
                 {
                     using (var csv = new CsvWriter(streamwriter, config))
                     {
-                        list.Add(r);
-                        csv.WriteRecords(list);
+                        robots.Add(r);
+                        csv.WriteRecords(robots);
                     }
                 }
             }

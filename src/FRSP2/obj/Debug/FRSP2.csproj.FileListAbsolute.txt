@@ -24,10 +24,6 @@ D:\Repositories\FRSP2\src\FRSP2\bin\Debug\FRSP2.exe.config
 D:\Repositories\FRSP2\src\FRSP2\bin\Debug\FRSP2.exe
 D:\Repositories\FRSP2\src\FRSP2\bin\Debug\FRSP2.pdb
 D:\Repositories\FRSP2\src\FRSP2\bin\Debug\ICSharpCode.SharpZipLib.dll
-D:\Repositories\FRSP2\src\FRSP2\bin\Debug\NPOI.dll
-D:\Repositories\FRSP2\src\FRSP2\bin\Debug\NPOI.OOXML.dll
-D:\Repositories\FRSP2\src\FRSP2\bin\Debug\NPOI.OpenXml4Net.dll
-D:\Repositories\FRSP2\src\FRSP2\bin\Debug\NPOI.OpenXmlFormats.dll
 D:\Repositories\FRSP2\src\FRSP2\bin\Debug\ICSharpCode.SharpZipLib.xml
 D:\Repositories\FRSP2\src\FRSP2\obj\Debug\MainWindow.baml
 D:\Repositories\FRSP2\src\FRSP2\obj\Debug\FRSP2.g.resources
@@ -113,3 +109,12 @@ E:\FRSP2\src\FRSP2\obj\Debug\FRSP2.g.resources
 E:\FRSP2\src\FRSP2\obj\Debug\FRSP2.Properties.Resources.resources
 E:\FRSP2\src\FRSP2\obj\Debug\FRSP2.csproj.GenerateResource.Cache
 E:\FRSP2\src\FRSP2\obj\Debug\FRSP2.csproj.CoreCompileInputs.cache
+D:\Repositories\FRSP2\src\FRSP2\bin\Debug\CsvHelper.dll
+D:\Repositories\FRSP2\src\FRSP2\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Repositories\FRSP2\src\FRSP2\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Repositories\FRSP2\src\FRSP2\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Repositories\FRSP2\src\FRSP2\bin\Debug\CsvHelper.xml
+D:\Repositories\FRSP2\src\FRSP2\bin\Debug\ICSharpCode.SharpZipLib.pdb
+D:\Repositories\FRSP2\src\FRSP2\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Repositories\FRSP2\src\FRSP2\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Repositories\FRSP2\src\FRSP2\bin\Debug\System.Threading.Tasks.Extensions.xml

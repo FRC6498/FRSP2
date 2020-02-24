@@ -40,8 +40,6 @@ namespace FRSP2
         {
             InitializeComponent();
 
-            Robot.self = r;
-
             cboPosition.ItemsSource = watchPositions;
 
             GrdTop.DataContext = r;
@@ -88,8 +86,7 @@ namespace FRSP2
 
             CSVExporter.current = r;
             //csvExport.Export();
-            csvExport.Write(csvExport.Read(), r);
-            
+            csvExport.Write(r);
             r.Reset();
         }
 
@@ -192,6 +189,14 @@ namespace FRSP2
         private void BtnTeleopLowerIncrement_Click(object sender, RoutedEventArgs e)
         {
             Increment(teleopLowerValue);
+        }
+
+        private void BtnExit_PreviewKeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (true)
+            {
+
+            }
         }
     }
 }
