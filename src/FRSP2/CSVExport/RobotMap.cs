@@ -11,6 +11,7 @@ namespace FRSP2.CSVExport
     {
         public RobotMap()
         {
+            //TODO: map by name?
             Map(m => m.TeamNumber);
             Map(m => m.MatchNumber);
             Map(m => m.WatchPos);
