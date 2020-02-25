@@ -20,7 +20,7 @@ namespace FRSP2.CSVExport
             Map(m => m.CanPark).Index(11).Ignore();
             Map(m => m.IsLevel).Index(12).Name("CanLevel");
             Map(m => m.WheelPosition).Index(13).Name("WheelPosition");
-            Map(m => m.WheelRotation).Index(14).Name($"WheelRotation");
+            Map(m => m.WheelRotation).Index(14).Name("WheelRotation");
         }
     }
 }

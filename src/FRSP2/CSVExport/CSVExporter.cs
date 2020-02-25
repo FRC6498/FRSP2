@@ -14,9 +14,10 @@ namespace FRSP2.CSVExport
         Robot robot = new Robot();
         static List<Robot> robots = new List<Robot>();
         public static Robot current;
-        //public static string path = @"C:\\Programming232\\test.csv";
-        public static string path = @"C:\\Users\\castl\\Desktop\\test.csv";
-        static string header = "BallsAutoLower,BallsAutoOuter,BallsAutoInner,WatchPos,CrossedAutoLine,BallsTeleLower,BallsTeleOuter,BallsTeleInner,WheelRotation,WheelPosition,CanHang,CanPark,IsLevel,TeamNumber,MatchNumber,";
+        string f;
+        static bool headerExists = false;
+        public static string path = @"C:\\Programming232\\test.csv";
+        //public static string path = @"C:\\Users\\castl\\Desktop\\test.csv";
         CsvConfiguration config = new CsvConfiguration(CultureInfo.CurrentCulture)
         {
             HasHeaderRecord = File.Exists(path),
@@ -55,39 +56,54 @@ namespace FRSP2.CSVExport
 
         public void Write(Robot r)
         {
+            if (File.Exists(path))
+            {
+                f = File.ReadLines(path).First();
+            }
+            else
+            {
+                f = "";
+            }
 
             //Read();
             //MessageBox.Show(config.HasHeaderRecord.ToString());
-            //using (FileStream filestream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.Write))
+            using (FileStream filestream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
+            {
+
+                if (f == "TeamNumber,MatchNumber,WatchPosition,BallsAutoInner,BallsAutoOuter,BallsAutoLower,CrossedLine,BallsTeleopInner,BallsTeleopOuter,BallsTeleopLower,CanHang,CanLevel,WheelPosition,WheelRotation")
+                {
+                    headerExists = true;
+                }
+                using (StreamWriter streamwriter = new StreamWriter(filestream))
+                {
+                    using (var csv = new CsvWriter(streamwriter, config))
+                    {
+                        config.HasHeaderRecord = File.Exists(path);
+                        csv.Configuration.RegisterClassMap<RobotMap>();
+                        if (!headerExists)
+                        {
+                            csv.WriteHeader<Robot>();
+                        }
+                        // TODO: add to list on update, write on quit
+                        csv.NextRecord();
+                        csv.WriteRecord(r);
+                    }
+                }
+            }
+            //try
             //{
-            //    //string f = File.ReadLines(path).ToArray()[0];
-            //    using (StreamWriter streamwriter = new StreamWriter(filestream))
-            //    {
-            //        using (var csv = new CsvWriter(streamwriter, config))
-            //        {
-            //            config.HasHeaderRecord = File.Exists(path);
-            //            csv.Configuration.RegisterClassMap<RobotMap>();
-            //            // robots.Add(r);
-            //            csv.WriteHeader<Robot>();
-            //            csv.NextRecord();
-            //            csv.WriteRecord(r);
-            //        }
-            //    }
+            //    export(r);
             //}
-            try
-            {
-                export(r);
-            }
-            catch (FileNotFoundException fnf)
-            {
-                File.Create(path);
-                export(r);
-            }
+            //catch (FileNotFoundException)
+            //{
+            //    File.Create(path);
+            //    export(r);
+            //}
         }
 
         public void export(Robot r)
         {
-            string f = File.ReadLines(path).ToArray()[0];
+            string f = File.ReadLines(path).First();
             FileStream stream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.Write);
             StreamWriter writer = new StreamWriter(stream);
             var csv = new CsvWriter(writer, config);
