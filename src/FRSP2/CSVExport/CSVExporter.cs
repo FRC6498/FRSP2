@@ -15,14 +15,13 @@ namespace FRSP2.CSVExport
         static List<Robot> robots = new List<Robot>();
         public static Robot current;
         //public static string path = @"C:\\Programming232\\test.csv";
-        public static string templatepath = @"C:\\Users\\castl\\Desktop\\template.txt";
         public static string path = @"C:\\Users\\castl\\Desktop\\test.csv";
         public static string csvFirstLine;
         static Boolean headerExists = false;
-        static string header = File.ReadAllText(templatepath);
+        static string header = "g";
         CsvConfiguration config = new CsvConfiguration(CultureInfo.CurrentCulture)
         {
-            HasHeaderRecord = GetHeader() == header
+            HasHeaderRecord = !File.Exists(path)
         };
         
         public static string GetHeader()
@@ -57,9 +56,9 @@ namespace FRSP2.CSVExport
             {     
                 using (StreamReader reader = new StreamReader(filestream))
                 {
-                    using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
+                    using (var csv = new CsvReader(reader, config))
                     {
-                        //csv.Configuration.RegisterClassMap<RobotMap>();
+                        csv.Configuration.RegisterClassMap<RobotMap>();
                         robots = csv.GetRecords<Robot>().ToList();
                     }
                 }
@@ -68,7 +67,7 @@ namespace FRSP2.CSVExport
 
         public void Write(Robot r)
         {
-            Read();
+            //Read();
 
             using (FileStream filestream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.Write))
             {
@@ -76,8 +75,10 @@ namespace FRSP2.CSVExport
                 {
                     using (var csv = new CsvWriter(streamwriter, config))
                     {
+                        
+                        csv.Configuration.RegisterClassMap<RobotMap>();
                         robots.Add(r);
-                        csv.WriteRecords(robots);
+                        csv.WriteRecord(r);
                     }
                 }
             }
