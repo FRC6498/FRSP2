@@ -39,7 +39,6 @@ namespace FRSP2.CSVExport
         }
         public void Read()
         {
-            
             // get header string
             if (!csvFirstLine.Contains(header))
             {
@@ -60,7 +59,7 @@ namespace FRSP2.CSVExport
                 {
                     using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
                     {
-                        csv.Configuration.RegisterClassMap<RobotMap>();
+                        //csv.Configuration.RegisterClassMap<RobotMap>();
                         robots = csv.GetRecords<Robot>().ToList();
                     }
                 }

@@ -1,4 +1,5 @@
 ﻿
+using CsvHelper.Configuration.Attributes;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -24,6 +25,7 @@ namespace FRSP2
         private int ballsAutoInner = 0; // 6pts
         private bool crossedAutoLine = false; // true if the robot moves during auto
 
+        //[Index(3)]
         public int BallsAutoLower
         {
             get
@@ -36,6 +38,8 @@ namespace FRSP2
                 OnPropertyChanged(nameof(BallsAutoLower));
             }
         }
+
+        //[Index(4)]
         public int BallsAutoOuter
         {
             get
@@ -48,6 +52,8 @@ namespace FRSP2
                 OnPropertyChanged(nameof(BallsAutoOuter));
             }
         }
+
+        //[Index(5)]
         public int BallsAutoInner
         {
             get
@@ -61,6 +67,7 @@ namespace FRSP2
             }
         }
 
+        //[Index(6)]
         public bool CrossedAutoLine
         {
             get
@@ -82,6 +89,7 @@ namespace FRSP2
         private bool wheelRotationControl = false; // 10pts
         private bool wheelPositionControl = false; // 20pts
 
+        //[Index(7)]
         public int BallsTeleLower
         {
             get
@@ -94,6 +102,8 @@ namespace FRSP2
                 OnPropertyChanged(nameof(BallsTeleLower));
             }
         }
+
+        //[Index(8)]
         public int BallsTeleOuter
         {
             get
@@ -106,6 +116,8 @@ namespace FRSP2
                 OnPropertyChanged(nameof(BallsTeleOuter));
             }
         }
+
+        //[Index(9)]
         public int BallsTeleInner
         {
             get
@@ -118,6 +130,8 @@ namespace FRSP2
                 OnPropertyChanged(nameof(BallsTeleInner));
             }
         }
+
+        //[Index(10)]
         public bool WheelRotation
         {
             get
@@ -130,6 +144,8 @@ namespace FRSP2
                 OnPropertyChanged(nameof(WheelRotation));
             }
         }
+
+        //[Index(10)]
         public bool WheelPosition
         {
             get
@@ -150,6 +166,7 @@ namespace FRSP2
         //private bool balance; // neat
         private bool level = false; // 15pts
 
+        //[Index(11)]
         public bool CanHang
         {
             get
@@ -162,6 +179,7 @@ namespace FRSP2
                 OnPropertyChanged(nameof(CanHang));
             }
         }
+        //[Index(12)]
         public bool CanPark
         {
             get
@@ -174,17 +192,8 @@ namespace FRSP2
                 OnPropertyChanged(nameof(CanPark));
             }
         }
-        /*public bool CanBalance
-        {
-            get
-            {
-                return balance;
-            }
-            set
-            {
-                balance = value;
-            }
-        }*/
+
+        //[Index(13)]
         public bool IsLevel
         {
             get
@@ -200,10 +209,12 @@ namespace FRSP2
         #endregion
 
         #region Misc
+
         private int _teamNum = 0;
         private int _matchNum = 0;
         private String _watchPos = string.Empty;
 
+        //[Index(1)]
         public int TeamNumber
         {
             get
@@ -217,6 +228,7 @@ namespace FRSP2
             }
         }
 
+        //[Index(0)]
         public int MatchNumber
         {
             get
@@ -230,6 +242,7 @@ namespace FRSP2
             }
         }
 
+        [Index(2)]
         public String WatchPos
         {
             get
