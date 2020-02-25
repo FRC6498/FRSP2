@@ -116,7 +116,6 @@
                 <CheckBox x:Name="chkPanelRotation" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" IsChecked="{Binding WheelRotation, Mode=TwoWay}" Content="Rotation Control?"/>
                 <CheckBox x:Name="chkPanelPosition" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" IsChecked="{Binding WheelPosition, Mode=TwoWay}" Content="Position Control?"/>
                 <CheckBox x:Name="chkClimb" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" IsChecked="{Binding CanHang, Mode=TwoWay}" Content="Climb"/>
-                <CheckBox x:Name="chkPark" Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" IsChecked="{Binding CanPark, Mode=TwoWay}" Content="Park"/>
                 <CheckBox x:Name="chkCanLevel" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" IsChecked="{Binding IsLevel, Mode=TwoWay}" Content="Can Level?"/>
 
             </Grid>

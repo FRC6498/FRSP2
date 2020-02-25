@@ -16,72 +16,89 @@ namespace FRSP2.CSVExport
         public static Robot current;
         //public static string path = @"C:\\Programming232\\test.csv";
         public static string path = @"C:\\Users\\castl\\Desktop\\test.csv";
-        public static string csvFirstLine;
-        static Boolean headerExists = false;
-        static string header = "g";
+        static string header = "BallsAutoLower,BallsAutoOuter,BallsAutoInner,WatchPos,CrossedAutoLine,BallsTeleLower,BallsTeleOuter,BallsTeleInner,WheelRotation,WheelPosition,CanHang,CanPark,IsLevel,TeamNumber,MatchNumber,";
         CsvConfiguration config = new CsvConfiguration(CultureInfo.CurrentCulture)
         {
-            HasHeaderRecord = !File.Exists(path)
+            HasHeaderRecord = File.Exists(path),
+            Delimiter = ","
         };
         
-        public static string GetHeader()
-        {
-            try
-            {
-                csvFirstLine = File.ReadLines(path).ToArray()[0];
-            }
-            catch (Exception)
-            {
-                csvFirstLine = "";
-            }
-            return csvFirstLine;
-        }
         public void Read()
         {
             // get header string
-            if (!csvFirstLine.Contains(header))
-            {
-                //MessageBox.Show(csvFirstLine);
-                headerExists = false;
-            }
-            else
-            {
-                headerExists = true;
-            }
-            if (!headerExists)
-            {
-                File.WriteAllText(path, header + Environment.NewLine); // replace all text with header (file was empty anyhow)
-            }
-            using (FileStream filestream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
-            {     
-                using (StreamReader reader = new StreamReader(filestream))
-                {
-                    using (var csv = new CsvReader(reader, config))
-                    {
-                        csv.Configuration.RegisterClassMap<RobotMap>();
-                        robots = csv.GetRecords<Robot>().ToList();
-                    }
-                }
-            }
+            //if (!csvFirstLine.Contains(header))
+            //{
+            //    //MessageBox.Show(csvFirstLine);
+            //    headerExists = false;
+            //}
+            //else
+            //{
+            //    headerExists = true;
+            //}
+            //if (!headerExists)
+            //{
+            //    File.WriteAllText(path, header + Environment.NewLine); // replace all text with header (file was empty anyhow)
+            //}
+            //using (FileStream filestream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
+            //{     
+            //    using (StreamReader reader = new StreamReader(filestream))
+            //    {
+            //        using (var csv = new CsvReader(reader, config))
+            //        {
+                        
+            //            csv.Configuration.RegisterClassMap<RobotMap>();
+            //            robots = csv.GetRecords<Robot>().ToList();
+            //        }
+            //    }
+            //}
         }
 
         public void Write(Robot r)
         {
-            //Read();
 
-            using (FileStream filestream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.Write))
+            //Read();
+            //MessageBox.Show(config.HasHeaderRecord.ToString());
+            //using (FileStream filestream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.Write))
+            //{
+            //    //string f = File.ReadLines(path).ToArray()[0];
+            //    using (StreamWriter streamwriter = new StreamWriter(filestream))
+            //    {
+            //        using (var csv = new CsvWriter(streamwriter, config))
+            //        {
+            //            config.HasHeaderRecord = File.Exists(path);
+            //            csv.Configuration.RegisterClassMap<RobotMap>();
+            //            // robots.Add(r);
+            //            csv.WriteHeader<Robot>();
+            //            csv.NextRecord();
+            //            csv.WriteRecord(r);
+            //        }
+            //    }
+            //}
+            try
             {
-                using (StreamWriter streamwriter = new StreamWriter(filestream))
-                {
-                    using (var csv = new CsvWriter(streamwriter, config))
-                    {
-                        
-                        csv.Configuration.RegisterClassMap<RobotMap>();
-                        robots.Add(r);
-                        csv.WriteRecord(r);
-                    }
-                }
+                export(r);
             }
+            catch (FileNotFoundException fnf)
+            {
+                File.Create(path);
+                export(r);
+            }
+        }
+
+        public void export(Robot r)
+        {
+            string f = File.ReadLines(path).ToArray()[0];
+            FileStream stream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            var csv = new CsvWriter(writer, config);
+            config.HasHeaderRecord = true;
+            csv.Configuration.RegisterClassMap<RobotMap>();
+            csv.WriteHeader<Robot>();
+            csv.NextRecord();
+            csv.WriteRecord(r);
+            csv.Flush();
+            writer.Close();
+            stream.Close();
         }
     }
 }

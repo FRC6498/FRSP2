@@ -73,7 +73,7 @@ namespace FRSP2
                 r.BallsTeleLower = int.Parse(teleopLowerValue.Text);
                 r.BallsTeleOuter = int.Parse(teleopOuterValue.Text);
                 r.CanHang = (bool)chkClimb.IsChecked;
-                r.CanPark = (bool)chkPark.IsChecked;
+                r.CanPark = true;
                 r.IsLevel = (bool)chkCanLevel.IsChecked;
                 r.WheelRotation = (bool)chkPanelRotation.IsChecked;
                 r.WheelPosition = (bool)chkPanelPosition.IsChecked;
