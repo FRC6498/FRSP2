@@ -1,9 +1,7 @@
 ﻿using System.Linq;
 using System.IO;
-using CsvHelper;
 using System.Collections.Generic;
 using System.Globalization;
-using CsvHelper.Configuration;
 using System;
 using System.Windows;
 
@@ -16,89 +14,50 @@ namespace FRSP2.CSVExport
         public static Robot current;
         //public static string path = @"C:\\Programming232\\test.csv";
         public static string path = @"C:\\Users\\castl\\Desktop\\test.csv";
-        static string header = "BallsAutoLower,BallsAutoOuter,BallsAutoInner,WatchPos,CrossedAutoLine,BallsTeleLower,BallsTeleOuter,BallsTeleInner,WheelRotation,WheelPosition,CanHang,CanPark,IsLevel,TeamNumber,MatchNumber,";
-        CsvConfiguration config = new CsvConfiguration(CultureInfo.CurrentCulture)
-        {
-            HasHeaderRecord = File.Exists(path),
-            Delimiter = ","
-        };
+        static string header = "TeamNumber,MatchNumber,WatchPosition,BallsAutoInner,BallsAutoOuter,BallsAutoLower,CrossedLine,BallsTeleopInner,BallsTeleopOuter,BallsTeleopLower,CanHang,CanLevel,WheelPosition,WheelRotation";
+        static bool headerExists = false;
         
         public void Read()
         {
-            // get header string
-            //if (!csvFirstLine.Contains(header))
-            //{
-            //    //MessageBox.Show(csvFirstLine);
-            //    headerExists = false;
-            //}
-            //else
-            //{
-            //    headerExists = true;
-            //}
-            //if (!headerExists)
-            //{
-            //    File.WriteAllText(path, header + Environment.NewLine); // replace all text with header (file was empty anyhow)
-            //}
-            //using (FileStream filestream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
-            //{     
-            //    using (StreamReader reader = new StreamReader(filestream))
-            //    {
-            //        using (var csv = new CsvReader(reader, config))
-            //        {
-                        
-            //            csv.Configuration.RegisterClassMap<RobotMap>();
-            //            robots = csv.GetRecords<Robot>().ToList();
-            //        }
-            //    }
-            //}
+            string content = "";
+            string[] lines;
+            if (File.Exists(path))
+            {
+                content = File.ReadAllText(path);
+                
+            }
+            File.WriteAllText(path, "");
         }
 
         public void Write(Robot r)
         {
-
-            //Read();
-            //MessageBox.Show(config.HasHeaderRecord.ToString());
-            //using (FileStream filestream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.Write))
-            //{
-            //    //string f = File.ReadLines(path).ToArray()[0];
-            //    using (StreamWriter streamwriter = new StreamWriter(filestream))
-            //    {
-            //        using (var csv = new CsvWriter(streamwriter, config))
-            //        {
-            //            config.HasHeaderRecord = File.Exists(path);
-            //            csv.Configuration.RegisterClassMap<RobotMap>();
-            //            // robots.Add(r);
-            //            csv.WriteHeader<Robot>();
-            //            csv.NextRecord();
-            //            csv.WriteRecord(r);
-            //        }
-            //    }
-            //}
-            try
+            string record = $"{r.TeamNumber},{r.MatchNumber},{r.WatchPos},{r.BallsAutoInner},{r.BallsAutoOuter},{r.BallsAutoLower},{r.CrossedAutoLine},{r.BallsTeleInner},{r.BallsAutoOuter},{r.BallsTeleLower},{r.CanHang},{r.IsLevel},{r.WheelPosition},{r.WheelRotation}";
+            string contents;
+            FileStream rs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read, FileShare.ReadWrite);
+            using (StreamReader reader = new StreamReader(rs))
             {
-                export(r);
+                contents = reader.ReadToEnd();
             }
-            catch (FileNotFoundException fnf)
+            rs.Close();
+            FileStream ws = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
+            using (StreamWriter writer = new StreamWriter(ws))
             {
-                File.Create(path);
-                export(r);
+                if (IsEmpty(contents))
+                {
+                    writer.WriteLine(header);
+                }
+                writer.WriteLine(record);
             }
+            ws.Close();
         }
 
-        public void export(Robot r)
+        public static bool IsEmpty(string s)
         {
-            string f = File.ReadLines(path).ToArray()[0];
-            FileStream stream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.Write);
-            StreamWriter writer = new StreamWriter(stream);
-            var csv = new CsvWriter(writer, config);
-            config.HasHeaderRecord = true;
-            csv.Configuration.RegisterClassMap<RobotMap>();
-            csv.WriteHeader<Robot>();
-            csv.NextRecord();
-            csv.WriteRecord(r);
-            csv.Flush();
-            writer.Close();
-            stream.Close();
+            if (String.IsNullOrEmpty(s) || String.IsNullOrWhiteSpace(s))
+            {
+                return true;
+            }
+            else return false;
         }
     }
 }

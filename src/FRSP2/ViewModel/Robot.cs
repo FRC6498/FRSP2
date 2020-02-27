@@ -1,5 +1,4 @@
 ﻿
-using CsvHelper.Configuration.Attributes;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -242,7 +241,7 @@ namespace FRSP2
             }
         }
 
-        [Index(2)]
+        
         public String WatchPos
         {
             get
