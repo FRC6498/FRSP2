@@ -66,7 +66,18 @@
                 <Button x:Name="btnAutoLowerIncrement" Grid.Row="2"  Grid.Column="3" FontSize="48" VerticalAlignment="Center" Content="+" Click="BtnAutoLowerIncrement_Click"/>
 
                 <!--Initiation Line-->
-                <CheckBox x:Name="AutoCrossedLine" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" IsChecked="{Binding CrossedAutoLine, Mode=TwoWay}" Content="Crossed Initiation Line?"/>
+                <Grid x:Name="CrossedLineGrid" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel x:Name="AutoLinePanel" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <CheckBox x:Name="AutoLineToggle" IsChecked="{Binding CrossedAutoLine, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock FontSize="22" Text="Crossed Initiation Line?" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
             </Grid>
         </Grid>
 

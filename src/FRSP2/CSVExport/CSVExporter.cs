@@ -4,7 +4,7 @@ using CsvHelper;
 using System.Collections.Generic;
 using System.Globalization;
 using CsvHelper.Configuration;
-using System;
+using System.Reflection;
 using System.Windows;
 
 namespace FRSP2.CSVExport
@@ -16,8 +16,7 @@ namespace FRSP2.CSVExport
         public static Robot current;
         string f;
         static bool headerExists = false;
-        public static string path = @"C:\\Programming232\\test.csv";
-        //public static string path = @"C:\\Users\\castl\\Desktop\\test.csv";
+        public static string path = Assembly.GetExecutingAssembly().CodeBase + "/test.csv";
         CsvConfiguration config = new CsvConfiguration(CultureInfo.CurrentCulture)
         {
             HasHeaderRecord = File.Exists(path),
