@@ -120,8 +120,7 @@ namespace FRSP2
         private void Increment(object sender)
         {
             TextBlock txt = (TextBlock)sender;
-            int val;
-            int.TryParse(txt.Text, out val);
+            int.TryParse(txt.Text, out int val);
             val++;
             txt.Text = val.ToString();
         }

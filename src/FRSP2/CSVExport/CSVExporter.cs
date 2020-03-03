@@ -1,9 +1,9 @@
-﻿using System.Linq;
+﻿
 using System.IO;
 using System.Collections.Generic;
-using System.Globalization;
 using System;
-using System.Windows;
+//using System.Windows;
+using FRSP2.ViewModel;
 
 namespace FRSP2.CSVExport
 {

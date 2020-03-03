@@ -4,7 +4,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace FRSP2
+namespace FRSP2.ViewModel
 {
     public class Robot : INotifyPropertyChanged
     {
