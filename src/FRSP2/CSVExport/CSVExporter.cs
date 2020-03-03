@@ -1,8 +1,6 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using System.Collections.Generic;
 using System;
-//using System.Windows;
 using FRSP2.ViewModel;
 
 namespace FRSP2.CSVExport
