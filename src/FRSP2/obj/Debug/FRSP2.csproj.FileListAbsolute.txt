@@ -73,8 +73,6 @@ E:\GitHub\FRSP2\src\FRSP2\obj\Debug\FRSP2.pdb
 E:\GitHub\FRSP2\src\FRSP2\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Repositories\FRSP2\src\FRSP2\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Programming232\FRSP2\src\FRSP2\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Programming232\FRSP2\src\FRSP2\bin\Debug\CsvHelper.dll
-C:\Programming232\FRSP2\src\FRSP2\bin\Debug\CsvHelper.xml
 C:\Programming232\FRSP2\src\FRSP2\bin\Debug\ICSharpCode.SharpZipLib.pdb
 C:\Programming232\FRSP2\src\FRSP2\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Programming232\FRSP2\src\FRSP2\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll

@@ -161,7 +161,6 @@ namespace FRSP2
 
         #region Endgame
         private bool hang = false; // 25pts
-        private bool park = false; // 5pts
         //private bool balance; // neat
         private bool level = false; // 15pts
 
@@ -176,19 +175,6 @@ namespace FRSP2
             {
                 hang = value;
                 OnPropertyChanged(nameof(CanHang));
-            }
-        }
-        //[Index(12)]
-        public bool CanPark
-        {
-            get
-            {
-                return park;
-            }
-            set
-            {
-                park = value;
-                OnPropertyChanged(nameof(CanPark));
             }
         }
 
@@ -210,7 +196,7 @@ namespace FRSP2
         #region Misc
 
         private int _teamNum = 0;
-        private int _matchNum = 0;
+        private int _matchNum = 1;
         private String _watchPos = string.Empty;
 
         //[Index(1)]
@@ -276,7 +262,6 @@ namespace FRSP2
             BallsTeleOuter = 0;
             BallsTeleLower = 0;
             CanHang = false;
-            CanPark = false;
             IsLevel = false;
             WheelPosition = false;
             WheelRotation = false;

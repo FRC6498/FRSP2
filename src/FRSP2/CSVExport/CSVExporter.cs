@@ -15,20 +15,6 @@ namespace FRSP2.CSVExport
         //public static string path = @"C:\\Programming232\\test.csv";
         public static string path = @"C:\\Users\\castl\\Desktop\\test.csv";
         static string header = "TeamNumber,MatchNumber,WatchPosition,BallsAutoInner,BallsAutoOuter,BallsAutoLower,CrossedLine,BallsTeleopInner,BallsTeleopOuter,BallsTeleopLower,CanHang,CanLevel,WheelPosition,WheelRotation";
-        static bool headerExists = false;
-        
-        public void Read()
-        {
-            string content = "";
-            string[] lines;
-            if (File.Exists(path))
-            {
-                content = File.ReadAllText(path);
-                
-            }
-            File.WriteAllText(path, "");
-        }
-
         public void Write(Robot r)
         {
             string record = $"{r.TeamNumber},{r.MatchNumber},{r.WatchPos},{r.BallsAutoInner},{r.BallsAutoOuter},{r.BallsAutoLower},{r.CrossedAutoLine},{r.BallsTeleInner},{r.BallsAutoOuter},{r.BallsTeleLower},{r.CanHang},{r.IsLevel},{r.WheelPosition},{r.WheelRotation}";

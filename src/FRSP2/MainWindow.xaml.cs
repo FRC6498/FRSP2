@@ -57,6 +57,11 @@ namespace FRSP2
         {
             try
             {
+                if (cboPosition.SelectedItem.ToString() == String.Empty || cboPosition.SelectedItem.ToString() == null)
+                {
+                    MessageBox.Show("Select a Watch Position");
+                    return;
+                }
                 // match info
                 r.TeamNumber = int.Parse(txtRobotNum.Text);
                 r.MatchNumber = int.Parse(txtMatchNum.Text);
@@ -66,20 +71,19 @@ namespace FRSP2
                 r.BallsAutoInner = int.Parse(txtAutoInnerValue.Text);
                 r.BallsAutoOuter = int.Parse(txtAutoOuterValue.Text);
                 r.BallsAutoLower = int.Parse(txtAutoLowerValue.Text);
-                r.CrossedAutoLine = (bool)AutoCrossedLine.IsChecked;
+                r.CrossedAutoLine = (bool)AutoLineToggle.IsChecked;
 
                 //teleop
                 r.BallsTeleInner = int.Parse(teleopInnerValue.Text);
                 r.BallsTeleLower = int.Parse(teleopLowerValue.Text);
                 r.BallsTeleOuter = int.Parse(teleopOuterValue.Text);
                 r.CanHang = (bool)chkClimb.IsChecked;
-                r.CanPark = true;
-                r.IsLevel = (bool)chkCanLevel.IsChecked;
+                r.IsLevel = (bool)chkLevel.IsChecked;
                 r.WheelRotation = (bool)chkPanelRotation.IsChecked;
                 r.WheelPosition = (bool)chkPanelPosition.IsChecked;
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //Console.WriteLine(ex.InnerException);
             }
