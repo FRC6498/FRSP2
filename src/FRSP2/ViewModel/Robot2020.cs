@@ -4,14 +4,14 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace FRSP2
+namespace FRSP2.ViewModel
 {
-    public class Robot : INotifyPropertyChanged
+    public class Robot2020 : INotifyPropertyChanged
     {
         public ICommand ObjectRelayCommand { get; set; }
         //public static Robot self;
 
-        public Robot()
+        public Robot2020()
         {
 
         }
@@ -161,6 +161,7 @@ namespace FRSP2
 
         #region Endgame
         private bool hang = false; // 25pts
+        private bool park = false; // 5pts
         //private bool balance; // neat
         private bool level = false; // 15pts
 
@@ -175,6 +176,19 @@ namespace FRSP2
             {
                 hang = value;
                 OnPropertyChanged(nameof(CanHang));
+            }
+        }
+        //[Index(12)]
+        public bool CanPark
+        {
+            get
+            {
+                return park;
+            }
+            set
+            {
+                park = value;
+                OnPropertyChanged(nameof(CanPark));
             }
         }
 
@@ -195,8 +209,8 @@ namespace FRSP2
 
         #region Misc
 
-        private int? _teamNum;
-        private int _matchNum = 1;
+        private int _teamNum = 0;
+        private int _matchNum = 0;
         private String _watchPos = string.Empty;
 
         //[Index(1)]
@@ -204,7 +218,7 @@ namespace FRSP2
         {
             get
             {
-                return _teamNum ?? 0;
+                return _teamNum;
             }
             set
             {
@@ -262,6 +276,7 @@ namespace FRSP2
             BallsTeleOuter = 0;
             BallsTeleLower = 0;
             CanHang = false;
+            CanPark = false;
             IsLevel = false;
             WheelPosition = false;
             WheelRotation = false;

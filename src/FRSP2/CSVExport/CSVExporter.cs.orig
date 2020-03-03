@@ -1,0 +1,143 @@
+﻿using System.Linq;
+using System.IO;
+using System.Collections.Generic;
+using System.Globalization;
+<<<<<<< HEAD
+using System;
+=======
+using CsvHelper.Configuration;
+>>>>>>> vim-mode
+using System.Reflection;
+using System.Windows;
+using FRSP2.ViewModel;
+
+namespace FRSP2.CSVExport
+{
+    public class CSVExporter
+    {
+<<<<<<< HEAD
+        Robot2020 robot = new Robot2020();
+        static List<Robot2020> robots = new List<Robot2020>();
+        public static Robot2020 current;
+        //public static string path = @"C:\\Programming232\\test.csv";
+        //public static string path = Assembly.GetExecutingAssembly().CodeBase + $"FRSP-Test-{DateTime.Now.DayOfWeek}.csv";
+        public static string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase) + "/test.csv";
+        static string header = "TeamNumber,MatchNumber,WatchPosition,BallsAutoInner,BallsAutoOuter,BallsAutoLower,CrossedLine,BallsTeleopInner,BallsTeleopOuter,BallsTeleopLower,CanHang,CanLevel,WheelPosition,WheelRotation";
+=======
+        Robot robot = new Robot();
+        static List<Robot> robots = new List<Robot>();
+        public static Robot current;
+        string f;
+        static bool headerExists = false;
+        public static string path = Assembly.GetExecutingAssembly().CodeBase + "/test.csv";
+        CsvConfiguration config = new CsvConfiguration(CultureInfo.CurrentCulture)
+        {
+            HasHeaderRecord = File.Exists(path),
+            Delimiter = ","
+        };
+>>>>>>> vim-mode
+        
+        public void Read()
+        {
+            string content = "";
+            if (File.Exists(path))
+            {
+                content = File.ReadAllText(path);
+                
+            }
+            File.WriteAllText(path, "");
+        }
+
+        public void Write(Robot2020 r)
+        {
+<<<<<<< HEAD
+            string record = $"{r.TeamNumber},{r.MatchNumber},{r.WatchPos},{r.BallsAutoInner},{r.BallsAutoOuter},{r.BallsAutoLower},{r.CrossedAutoLine},{r.BallsTeleInner},{r.BallsAutoOuter},{r.BallsTeleLower},{r.CanHang},{r.IsLevel},{r.WheelPosition},{r.WheelRotation}";
+            string contents;
+            FileStream rs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read, FileShare.ReadWrite);
+            using (StreamReader reader = new StreamReader(rs))
+            {
+                contents = reader.ReadToEnd();
+            }
+            rs.Close();
+            FileStream ws = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
+            using (StreamWriter writer = new StreamWriter(ws))
+            {
+                if (IsEmpty(contents))
+                {
+                    writer.WriteLine(header);
+                }
+                writer.WriteLine(record);
+            }
+            ws.Close();
+=======
+            if (File.Exists(path))
+            {
+                f = File.ReadLines(path).First();
+            }
+            else
+            {
+                f = "";
+            }
+
+            //Read();
+            //MessageBox.Show(config.HasHeaderRecord.ToString());
+            using (FileStream filestream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.ReadWrite))
+            {
+
+                if (f == "TeamNumber,MatchNumber,WatchPosition,BallsAutoInner,BallsAutoOuter,BallsAutoLower,CrossedLine,BallsTeleopInner,BallsTeleopOuter,BallsTeleopLower,CanHang,CanLevel,WheelPosition,WheelRotation")
+                {
+                    headerExists = true;
+                }
+                using (StreamWriter streamwriter = new StreamWriter(filestream))
+                {
+                    using (var csv = new CsvWriter(streamwriter, config))
+                    {
+                        config.HasHeaderRecord = File.Exists(path);
+                        csv.Configuration.RegisterClassMap<RobotMap>();
+                        if (!headerExists)
+                        {
+                            csv.WriteHeader<Robot>();
+                        }
+                        // TODO: add to list on update, write on quit
+                        csv.NextRecord();
+                        csv.WriteRecord(r);
+                    }
+                }
+            }
+            //try
+            //{
+            //    export(r);
+            //}
+            //catch (FileNotFoundException)
+            //{
+            //    File.Create(path);
+            //    export(r);
+            //}
+>>>>>>> vim-mode
+        }
+
+        public static bool IsEmpty(string s)
+        {
+<<<<<<< HEAD
+            if (String.IsNullOrEmpty(s) || String.IsNullOrWhiteSpace(s))
+            {
+                return true;
+            }
+            else return false;
+=======
+            string f = File.ReadLines(path).First();
+            FileStream stream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            var csv = new CsvWriter(writer, config);
+            config.HasHeaderRecord = true;
+            csv.Configuration.RegisterClassMap<RobotMap>();
+            csv.WriteHeader<Robot>();
+            csv.NextRecord();
+            csv.WriteRecord(r);
+            csv.Flush();
+            writer.Close();
+            stream.Close();
+>>>>>>> vim-mode
+        }
+    }
+}

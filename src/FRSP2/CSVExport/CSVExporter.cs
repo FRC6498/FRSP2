@@ -9,12 +9,12 @@ namespace FRSP2.CSVExport
 {
     public class CSVExporter
     {
-        Robot robot = new Robot();
-        static List<Robot> robots = new List<Robot>();
+        private Robot robot = new Robot();
+        private static List<Robot> robots = new List<Robot>();
         public static Robot current;
         //public static string path = @"C:\\Programming232\\test.csv";
         public static string path = @"C:\\Users\\castl\\Desktop\\test.csv";
-        static string header = "TeamNumber,MatchNumber,WatchPosition,BallsAutoInner,BallsAutoOuter,BallsAutoLower,CrossedLine,BallsTeleopInner,BallsTeleopOuter,BallsTeleopLower,CanHang,CanLevel,WheelPosition,WheelRotation";
+        static readonly string header = "TeamNumber,MatchNumber,WatchPosition,BallsAutoInner,BallsAutoOuter,BallsAutoLower,CrossedLine,BallsTeleopInner,BallsTeleopOuter,BallsTeleopLower,CanHang,CanLevel,WheelPosition,WheelRotation";
         public void Write(Robot r)
         {
             string record = $"{r.TeamNumber},{r.MatchNumber},{r.WatchPos},{r.BallsAutoInner},{r.BallsAutoOuter},{r.BallsAutoLower},{r.CrossedAutoLine},{r.BallsTeleInner},{r.BallsAutoOuter},{r.BallsTeleLower},{r.CanHang},{r.IsLevel},{r.WheelPosition},{r.WheelRotation}";
