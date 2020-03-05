@@ -1,0 +1,28 @@
+name: FRSP
+on:
+  push:
+    branches: 
+    - master
+  pull_request:
+    branches: 
+    - master
+
+jobs:
+  build:
+    runs-on: [windows-latest]
+
+    steps:
+      - uses: actions/checkout@v1
+        name: Checkout Code
+
+      - name: Setup MSBuild path
+        uses: warrenbuckley/Setup-MSBuild@v1
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.2
+
+      - name: Restore NuGet Packages
+        run: nuget restore src/FRSP2.sln
+
+      - name: Build FRSP
+        run: msbuild src/FRSP2.sln /p:Configuration=Release /p:DeployOnBuild=false
