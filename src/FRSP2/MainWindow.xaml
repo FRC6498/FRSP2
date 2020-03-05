@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FRSP2"
+        xmlns:viewmodel"clr-namespace:FRSP2.ViewModel"
         x:Class="FRSP2.MainWindow"
         mc:Ignorable="d"
         Title="FRSP 2020.1.0" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="None" HorizontalAlignment="Center" Height="569.867">
@@ -104,7 +105,7 @@
     </Window.Resources>
     <Grid x:Name="GrdTop">
         <Grid.DataContext>
-            <local:Robot/>
+            <viewmodel:Robot/>
         </Grid.DataContext>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
