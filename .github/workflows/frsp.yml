@@ -26,3 +26,13 @@ jobs:
 
       - name: Build FRSP
         run: msbuild src/FRSP2.sln /p:Configuration=Release /p:DeployOnBuild=false
+        
+      - name: Upload Build
+        env:
+          debug: ${{ true }}
+        uses: actions/upload-artifact@v1.0.0
+        if: debug
+        with:
+          name: FRSP2.exe
+          path: src/FRSP2/bin/Debug
+        
