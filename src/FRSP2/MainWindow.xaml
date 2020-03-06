@@ -101,7 +101,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>git
     </Window.Resources>
     <Grid x:Name="GrdTop">
         <Grid.DataContext>
