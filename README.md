@@ -1,4 +1,4 @@
-# FRSP2 
+# FRSP2 ![FRSP](https://github.com/FRCSP/FRSP2/workflows/FRSP/badge.svg?branch=dev)
 
 ## About
 FRSP2 is a scouting program intended for use in the FIRST Robotics Competition. It was designed for the express purpose of running on Windows laptops and exporting to an excel spreadsheet.
