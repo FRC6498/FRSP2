@@ -16,11 +16,6 @@ namespace FRSP2
         CSVExporter csvExport = new CSVExporter();
         public static Robot r = new Robot();
         public string exc;
-        [DllImport("Kernel32")]
-        public static extern void AllocConsole();
-
-        [DllImport("Kernel32")]
-        public static extern void FreeConsole();
 
         public static List<String> watchPositions = new List<String>
             {
