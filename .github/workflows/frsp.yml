@@ -32,7 +32,7 @@ jobs:
         env:
           debug: ${{ true }}
         uses: actions/upload-artifact@v1.0.0
-        if: debug
+        if: debug == true
         with:
           name: FRSP2.exe
           path: src/FRSP2/bin/Debug
