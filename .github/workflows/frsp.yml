@@ -29,10 +29,7 @@ jobs:
         run: msbuild src/FRSP2.sln /p:Configuration=Release /p:DeployOnBuild=false
         
       - name: Upload Build
-        env:
-          DEBUG: 'true'
         uses: actions/upload-artifact@v1.0.0
-        if: $DEBUG == 'true'
         with:
           name: FRSP2.exe
           path: src/FRSP2/bin/Debug
