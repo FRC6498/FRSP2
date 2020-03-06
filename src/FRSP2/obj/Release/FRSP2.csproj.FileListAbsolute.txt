@@ -10,7 +10,6 @@ D:\Repositories\FRSP2\src\FRSP2\bin\Release\ICSharpCode.SharpZipLib.xml
 D:\Repositories\FRSP2\src\FRSP2\bin\Release\Microsoft.Bcl.AsyncInterfaces.xml
 D:\Repositories\FRSP2\src\FRSP2\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
 D:\Repositories\FRSP2\src\FRSP2\bin\Release\System.Threading.Tasks.Extensions.xml
-D:\Repositories\FRSP2\src\FRSP2\obj\Release\FRSP2.csprojAssemblyReference.cache
 D:\Repositories\FRSP2\src\FRSP2\obj\Release\MainWindow.g.cs
 D:\Repositories\FRSP2\src\FRSP2\obj\Release\App.g.cs
 D:\Repositories\FRSP2\src\FRSP2\obj\Release\GeneratedInternalTypeHelper.g.cs

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using FRSP2.ViewModel;
+using System.Reflection;
 
 namespace FRSP2.CSVExport
 {
@@ -11,7 +12,9 @@ namespace FRSP2.CSVExport
         private static List<Robot> robots = new List<Robot>();
         public static Robot current;
         //public static string path = @"C:\\Programming232\\test.csv";
-        public static string path = @"C:\\Users\\castl\\Desktop\\test.csv";
+        //public static string path = @"C:\\Users\\castl\\Desktop\\scouting.csv";
+        public static string path = @"C:\\6498Scouting\\6498_Scouting.csv";
+
         static readonly string header = "TeamNumber,MatchNumber,WatchPosition,BallsAutoInner,BallsAutoOuter,BallsAutoLower,CrossedLine,BallsTeleopInner,BallsTeleopOuter,BallsTeleopLower,CanHang,CanLevel,WheelPosition,WheelRotation";
         public void Write(Robot r)
         {
