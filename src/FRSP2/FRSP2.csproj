@@ -68,7 +68,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CSVExport\CSVExporter.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\Robot.cs" />
     <Compile Include="Win32Processes.cs" />
     <Page Include="MainWindow.xaml">
