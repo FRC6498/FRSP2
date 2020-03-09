@@ -112,4 +112,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /y "$(OutDir)FRSP2.exe" "$(OutDir)..\..\..\..\"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
