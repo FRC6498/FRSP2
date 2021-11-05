@@ -1,5 +1,0 @@
-TODO: alter path to actual
-Test on multi-laptop setup (generate filename from laptop name?)
-testing
-FILE MUST NOT EXIST BEFORE USE
-if it does, get records, delete, resend reconds
