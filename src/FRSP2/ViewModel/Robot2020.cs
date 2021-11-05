@@ -6,10 +6,8 @@ using System.Windows.Input;
 
 namespace FRSP2.ViewModel
 {
-    public class Robot2020 : INotifyPropertyChanged
+    public class Robot2020 : Robot
     {
-        public ICommand ObjectRelayCommand { get; set; }
-        //public static Robot self;
 
         public Robot2020()
         {
@@ -256,17 +254,17 @@ namespace FRSP2.ViewModel
         }
         #endregion
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged(string propertyName)
+        /*protected override void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
-        }
+        }*/
 
-        public void Reset()
+        public override void Reset()
         {
             CrossedAutoLine = false;
             BallsAutoInner = 0;
