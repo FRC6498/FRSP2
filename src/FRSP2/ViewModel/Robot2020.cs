@@ -22,7 +22,6 @@ namespace FRSP2.ViewModel
         private int ballsAutoInner = 0; // 6pts
         private bool crossedAutoLine = false; // true if the robot moves during auto
 
-        //[Index(3)]
         public int BallsAutoLower
         {
             get
@@ -36,7 +35,6 @@ namespace FRSP2.ViewModel
             }
         }
 
-        //[Index(4)]
         public int BallsAutoOuter
         {
             get
@@ -50,7 +48,6 @@ namespace FRSP2.ViewModel
             }
         }
 
-        //[Index(5)]
         public int BallsAutoInner
         {
             get
@@ -64,7 +61,6 @@ namespace FRSP2.ViewModel
             }
         }
 
-        //[Index(6)]
         public bool CrossedAutoLine
         {
             get
@@ -86,7 +82,6 @@ namespace FRSP2.ViewModel
         private bool wheelRotationControl = false; // 10pts
         private bool wheelPositionControl = false; // 20pts
 
-        //[Index(7)]
         public int BallsTeleLower
         {
             get
@@ -100,7 +95,6 @@ namespace FRSP2.ViewModel
             }
         }
 
-        //[Index(8)]
         public int BallsTeleOuter
         {
             get
@@ -114,7 +108,6 @@ namespace FRSP2.ViewModel
             }
         }
 
-        //[Index(9)]
         public int BallsTeleInner
         {
             get
@@ -128,7 +121,6 @@ namespace FRSP2.ViewModel
             }
         }
 
-        //[Index(10)]
         public bool WheelRotation
         {
             get
@@ -142,7 +134,6 @@ namespace FRSP2.ViewModel
             }
         }
 
-        //[Index(10)]
         public bool WheelPosition
         {
             get
@@ -163,7 +154,6 @@ namespace FRSP2.ViewModel
         //private bool balance; // neat
         private bool level = false; // 15pts
 
-        //[Index(11)]
         public bool CanHang
         {
             get
@@ -176,7 +166,7 @@ namespace FRSP2.ViewModel
                 OnPropertyChanged(nameof(CanHang));
             }
         }
-        //[Index(12)]
+
         public bool CanPark
         {
             get
@@ -190,7 +180,6 @@ namespace FRSP2.ViewModel
             }
         }
 
-        //[Index(13)]
         public bool IsLevel
         {
             get
@@ -204,66 +193,7 @@ namespace FRSP2.ViewModel
             }
         }
         #endregion
-
-        #region Misc
-
-        private int _teamNum = 0;
-        private int _matchNum = 0;
-        private String _watchPos = string.Empty;
-
-        //[Index(1)]
-        public int TeamNumber
-        {
-            get
-            {
-                return _teamNum;
-            }
-            set
-            {
-                _teamNum = value;
-                OnPropertyChanged(nameof(TeamNumber));
-            }
-        }
-
-        //[Index(0)]
-        public int MatchNumber
-        {
-            get
-            {
-                return _matchNum;
-            }
-            set
-            {
-                _matchNum = value;
-                OnPropertyChanged(nameof(MatchNumber));
-            }
-        }
-
         
-        public String WatchPos
-        {
-            get
-            {
-                return _watchPos;
-            }
-            set
-            {
-                _watchPos = value;
-                OnPropertyChanged(nameof(WatchPos));
-            }
-        }
-        #endregion
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        /*protected override void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }*/
-
         public override void Reset()
         {
             CrossedAutoLine = false;
